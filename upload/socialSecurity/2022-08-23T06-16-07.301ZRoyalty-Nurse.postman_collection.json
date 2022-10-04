@@ -1,0 +1,1119 @@
+{
+	"info": {
+		"_postman_id": "1db9de25-c433-41a9-94ad-1d680422c579",
+		"name": "Royalty-Nurse",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Sign Up",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"if (pm.response.code === 201){\r",
+							"    pm.environment.set('authToken' , pm.response.json().token)\r",
+							"}"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"user_email\":\"jay987@gmail.com\",\r\n    \"user_password\":\"abc123\",\r\n    \"confirm_password\":\"abc123\"\r\n\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:5000/api/sign-up",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"sign-up"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Sign In",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"if (pm.response.code === 200){\r",
+							"    pm.environment.set('authToken' , pm.response.json().token)\r",
+							"}"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"user_email\": \"test99@gmail.com\",\r\n    \"user_password\": \"abc123\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:5000/api/sign-in",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"sign-in"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Verify User",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2VtYWlsIjoiaGFtYWQxMThAZ21haWwuY29tIiwiX2lkIjoiNjJlM2FkMWEzMmNjN2ZhMDRkMWZiZWFjIiwiaWF0IjoxNjU5MDg4MTU0fQ.mw4FUq-o0t4zu1NWg9lDsieHhVd-yq5J84WF5rFeJe4",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"user_social_token\": \"gdfgkl\",\r\n    \"user_social_type\": \"dfgdfg\",\r\n    \"user_device_type\": \"dfgfdgsdsd\",\r\n    \"user_device_token\": \"dfgfdg\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://server.appsstaging.com:3015/api/sociallogin",
+					"protocol": "http",
+					"host": [
+						"server",
+						"appsstaging",
+						"com"
+					],
+					"port": "3015",
+					"path": [
+						"api",
+						"sociallogin"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Forget Password",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2VtYWlsIjoiaGFzYW5AZ21haWwuY29tIiwiX2lkIjoiNjJlM2RkY2ZhZDdkMTUxMmMyNmZhMjU3Iiwicm9sZSI6InVzZXIiLCJpYXQiOjE2NTkxMDA2ODF9.p1X7IPsGe0uVQdLfg69hy1cSyHCccwEZBgDDpwRO6xY",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"user_email\":\"hasan@gmail.com\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://server.appsstaging.com:3015/api/forget-password",
+					"protocol": "http",
+					"host": [
+						"server",
+						"appsstaging",
+						"com"
+					],
+					"port": "3015",
+					"path": [
+						"api",
+						"forget-password"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Password",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2VtYWlsIjoiaGFtYWQxMThAZ21haWwuY29tIiwiX2lkIjoiNjJlM2FkMWEzMmNjN2ZhMDRkMWZiZWFjIiwicm9sZSI6InVzZXIiLCJpYXQiOjE2NTkwOTA5MTR9.htDHyIMKzrd-boPVQNYRZEuh2mZyM-ZwB2v9oYfusa0",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"user_password\":\"12345\",\r\n    \"user_new_password\":\"abc123\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:5000/api/update-password",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"update-password"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Profile Setup",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2VtYWlsIjoidGVzdDk5QGdtYWlsLmNvbSIsIl9pZCI6IjYyZjllODZlZjQyOTY2MDgwNmM2YWNkMCIsInJvbGUiOiJ1c2VyIiwiaWF0IjoxNjYwNjQ5MzY5fQ.KlvMDqmEMpiawWaPriuS3Wkm2QWMrNrEYpt4fZB-lOo",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "full_name",
+							"value": "Abdullah",
+							"type": "default"
+						},
+						{
+							"key": "license_num",
+							"value": "7856412",
+							"type": "default"
+						},
+						{
+							"key": "ssn",
+							"value": "45454545",
+							"type": "default"
+						},
+						{
+							"key": "position",
+							"value": "nurse",
+							"type": "default"
+						},
+						{
+							"key": "user_Image",
+							"type": "file",
+							"src": "/C:/Users/abdullah.amjad/Downloads/pexels-mike-b-170811.jpg"
+						}
+					]
+				},
+				"url": {
+					"raw": "server.appsstaging.com:3015/api/setup-Profile",
+					"host": [
+						"server",
+						"appsstaging",
+						"com"
+					],
+					"port": "3015",
+					"path": [
+						"api",
+						"setup-Profile"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Upload Documents",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2VtYWlsIjoiamF5OTg3QGdtYWlsLmNvbSIsIl9pZCI6IjYyZmYyYjNmMjA3N2ExOGQxMWRkOGJjOSIsInJvbGUiOiJ1c2VyIiwiaWF0IjoxNjYwODg5OTE5fQ.S7YrC0MYWolf99C-TpuyaVRmJwFAwlnmvA1GUR5b_KI",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "driverLicense",
+							"type": "file",
+							"src": "/C:/Users/abdullah.amjad/Desktop/Screens (1)/02. Pre Login.jpg",
+							"disabled": true
+						},
+						{
+							"key": "cnaCertificate",
+							"type": "file",
+							"src": "/C:/Users/abdullah.amjad/Desktop/Screens (1)/03. Agreement.jpg",
+							"disabled": true
+						},
+						{
+							"key": "nursingLicense",
+							"type": "file",
+							"src": "/C:/Users/abdullah.amjad/Desktop/Screens (1)/07. OTP Verification.jpg",
+							"disabled": true
+						},
+						{
+							"key": "socialSecurity",
+							"type": "file",
+							"src": "/C:/Users/abdullah.amjad/Desktop/Screens (1)/08. Change Password.jpg",
+							"disabled": true
+						},
+						{
+							"key": "cprLicense",
+							"type": "file",
+							"src": "/C:/Users/abdullah.amjad/Desktop/Screens (1)/14. Filters.jpg",
+							"disabled": true
+						},
+						{
+							"key": "blsLicense",
+							"type": "file",
+							"src": "/C:/Users/abdullah.amjad/Desktop/Screens (1)/10. Upload Docs 1.jpg",
+							"disabled": true
+						},
+						{
+							"key": "aclsLicense",
+							"type": "file",
+							"src": "/C:/Users/abdullah.amjad/Downloads/WhatsApp Image 2022-08-12 at 4.49.05 PM.jpeg"
+						},
+						{
+							"key": "covidVaccine",
+							"type": "file",
+							"src": "/C:/Users/abdullah.amjad/Desktop/Screens (1)/07. OTP Verification.jpg",
+							"disabled": true
+						},
+						{
+							"key": "hepatitisLicense",
+							"type": "file",
+							"src": "/C:/Users/abdullah.amjad/Desktop/Screens (1)/34. Payment Settings.jpg",
+							"disabled": true
+						}
+					],
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:5000/api/upload-document",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"upload-document"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Resend Code",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"user_id\":\"62e3ad1a32cc7fa04d1fbeac\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:5000/api/resend-code",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"resend-code"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Log Out",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2VtYWlsIjpudWxsLCJfaWQiOiI2MmU5MTNjYjhjMDYzNGIxZGU3ZjM3NzciLCJyb2xlIjoidXNlciIsImlhdCI6MTY1OTQ0MzQ2N30.Qf5LfTdZ9kjdC6uRvNR6ymfvpqaPz_myDeYnJFanni4",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://server.appsstaging.com:3015/api/log-out",
+					"protocol": "http",
+					"host": [
+						"server",
+						"appsstaging",
+						"com"
+					],
+					"port": "3015",
+					"path": [
+						"api",
+						"log-out"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Reset Password",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2VtYWlsIjoiaGFtYWQxMThAZ21haWwuY29tIiwiX2lkIjoiNjJlM2FkMWEzMmNjN2ZhMDRkMWZiZWFjIiwiaWF0IjoxNjU5MDg5NTgxfQ.1FNFVqcNkD6jVHf3HcWp9u_nEe8Zk8GifTsl5vkr3lw",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"user_id\":\"62e3ad1a32cc7fa04d1fbeac\",\r\n    \"user_password\":\"12345\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:5000/api/reset-password",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"reset-password"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get User",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2VtYWlsIjoiT01JQGdtYWlsLmNvbSIsIl9pZCI6IjYyZTNkZjk3YWQ3ZDE1MTJjMjZmYTI3NCIsInJvbGUiOiJob3NwaXRhbCIsImlhdCI6MTY1OTEwMTE2NX0.JPQQ46VRNdEbxQi-mMzPr9RVUoiiWQLJSdPZxbrBED4",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://server.appsstaging.com:3015/api/profile",
+					"protocol": "http",
+					"host": [
+						"server",
+						"appsstaging",
+						"com"
+					],
+					"port": "3015",
+					"path": [
+						"api",
+						"profile"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Documents",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2VtYWlsIjoiamF5OTg3QGdtYWlsLmNvbSIsIl9pZCI6IjYyZmYyYjNmMjA3N2ExOGQxMWRkOGJjOSIsInJvbGUiOiJ1c2VyIiwiaWF0IjoxNjYwODg5OTE5fQ.S7YrC0MYWolf99C-TpuyaVRmJwFAwlnmvA1GUR5b_KI",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "localhost:5000/api/get-documents",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"get-documents"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update user Details",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2VtYWlsIjoiaGFzYW5AZ21haWwuY29tIiwiX2lkIjoiNjJlM2RkY2ZhZDdkMTUxMmMyNmZhMjU3Iiwicm9sZSI6InVzZXIiLCJpYXQiOjE2NTkxMDA2ODF9.p1X7IPsGe0uVQdLfg69hy1cSyHCccwEZBgDDpwRO6xY",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"full_name\":\"Hasan Memon Ashraf\",\r\n    \"user_address\":\"R-212 Dummy adress\",\r\n    \"zip_code\":\"78201\",\r\n    \"state\":\"Los Angelos\",\r\n    \"license_num\":\"33445566\"\r\n\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://server.appsstaging.com:3015/api/update-user",
+					"protocol": "http",
+					"host": [
+						"server",
+						"appsstaging",
+						"com"
+					],
+					"port": "3015",
+					"path": [
+						"api",
+						"update-user"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Post Hospital Shift",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2VtYWlsIjoiT01JQGdtYWlsLmNvbSIsIl9pZCI6IjYyZTNkZjk3YWQ3ZDE1MTJjMjZmYTI3NCIsInJvbGUiOiJob3NwaXRhbCIsImlhdCI6MTY1OTEwMTA3OX0.ZmvDN5A5RDjsQ-IiIcK-VubRbywFbQySw4-q2PHNUhs",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"hospital_name\":\"Tabba natirnal\",\r\n    \"job_title\":\"Male Nurse\",\r\n    \"job_timing\":\"10am - 12am\",\r\n    \"hourly_rate\":\"10\",\r\n    \"longitude\":\"123\",\r\n    \"latitude\":\"456\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://server.appsstaging.com:3015/api/post-shift",
+					"protocol": "http",
+					"host": [
+						"server",
+						"appsstaging",
+						"com"
+					],
+					"port": "3015",
+					"path": [
+						"api",
+						"post-shift"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Apply job",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2VtYWlsIjoiT01JMUBnbWFpbC5jb20iLCJfaWQiOiI2MmYzNjE3ZGZjZDdjNDc4MTdiZTc2YmUiLCJyb2xlIjoiaG9zcGl0YWwiLCJpYXQiOjE2NjAxMTczNzN9.HWvaLmxw_dh0ChgJ_WNC1kI-rAMbftEen1VPktXCYh4",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"hospital_id\": \"62e3b5689cf39b928010ae12\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:5000/api/apply-job",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"apply-job"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Approve Job Request",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2VtYWlsIjoiT01JMUBnbWFpbC5jb20iLCJfaWQiOiI2MmYzNjE3ZGZjZDdjNDc4MTdiZTc2YmUiLCJyb2xlIjoiaG9zcGl0YWwiLCJpYXQiOjE2NjAxMTczNzN9.HWvaLmxw_dh0ChgJ_WNC1kI-rAMbftEen1VPktXCYh4",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"job_id\": \"62ea11783e5ff664c437132c\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:5000/api/approve-job-request",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"approve-job-request"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "FInd Jobs",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:5000/api/find-jobs",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"find-jobs"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Find My Jobs",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2VtYWlsIjoia2lzaG9yZTFAZ21haWwuY29tIiwiX2lkIjoiNjJlM2E3NGNlNGIwY2MyOGJhMGNjMDkzIiwicm9sZSI6InVzZXIiLCJpYXQiOjE2NTk1MDcwMzR9.vdvovVR2may54JXTHfcIGTM9BLSrkUOMd3q8NtD8-wY",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:5000/api/my-jobs",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"my-jobs"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Previous Shift",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2VtYWlsIjoia2lzaG9yZTFAZ21haWwuY29tIiwiX2lkIjoiNjJlM2E3NGNlNGIwY2MyOGJhMGNjMDkzIiwicm9sZSI6InVzZXIiLCJpYXQiOjE2NTk1MDcwMzR9.vdvovVR2may54JXTHfcIGTM9BLSrkUOMd3q8NtD8-wY",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:5000/api/previous-shifts",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"previous-shifts"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Coming Shifts",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2VtYWlsIjoia2lzaG9yZTFAZ21haWwuY29tIiwiX2lkIjoiNjJlM2E3NGNlNGIwY2MyOGJhMGNjMDkzIiwicm9sZSI6InVzZXIiLCJpYXQiOjE2NTk1MDcwMzR9.vdvovVR2may54JXTHfcIGTM9BLSrkUOMd3q8NtD8-wY",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:5000/api/coming-shifts",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"coming-shifts"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add Timesheet",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2VtYWlsIjoia2lzaG9yZTFAZ21haWwuY29tIiwiX2lkIjoiNjJlM2E3NGNlNGIwY2MyOGJhMGNjMDkzIiwicm9sZSI6InVzZXIiLCJpYXQiOjE2NTk1MDcwMzR9.vdvovVR2may54JXTHfcIGTM9BLSrkUOMd3q8NtD8-wY",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"clockIn\": \"14:00\",\r\n    \"clockOut\": \"18:00\",\r\n    \"hospital_id\": \"62e237e0e4f971d9cfd42673\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:5000/api/time-sheet",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"time-sheet"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "List of TimeSheet",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2VtYWlsIjoia2lzaG9yZTFAZ21haWwuY29tIiwiX2lkIjoiNjJlM2E3NGNlNGIwY2MyOGJhMGNjMDkzIiwicm9sZSI6InVzZXIiLCJpYXQiOjE2NTk1MDcwMzR9.vdvovVR2may54JXTHfcIGTM9BLSrkUOMd3q8NtD8-wY",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:5000/api/time-sheet-list",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"time-sheet-list"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Social Login",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"user_social_token\": \"1es\",\r\n    \"user_social_type\": \"2es\",\r\n    \"user_device_type\": \"4e4\",\r\n    \"user_device_token\": \"4rr\",\r\n    \"user_email\":\"abc321@gmail.com\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://server.appsstaging.com:3015/api/sociaLlogin",
+					"protocol": "http",
+					"host": [
+						"server",
+						"appsstaging",
+						"com"
+					],
+					"port": "3015",
+					"path": [
+						"api",
+						"sociaLlogin"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Transaction",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2VtYWlsIjoia2lzaG9yZTFAZ21haWwuY29tIiwiX2lkIjoiNjJlM2E3NGNlNGIwY2MyOGJhMGNjMDkzIiwicm9sZSI6InVzZXIiLCJpYXQiOjE2NTk2OTI3MDR9.hYf-0x6TTGn4eGNBSv4yGyjdAA0MnBch0zToIAb3bDg",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"card_id\": \"62ecefc490c9901b898faab8\",\r\n    \"name\": \"Kishore 123\",\r\n    \"amount\": \"60000\",\r\n    \"description\": \"IT Tranaction\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:5000/api/card-data",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"card-data"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Content",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"title\": \"Hello world\",\r\n    \"content\": \"Hello world 123\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://server.appsstaging.com:3015/api/get-content/terms_and_conditions",
+					"protocol": "http",
+					"host": [
+						"server",
+						"appsstaging",
+						"com"
+					],
+					"port": "3015",
+					"path": [
+						"api",
+						"get-content",
+						"terms_and_conditions"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add Card",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2VtYWlsIjoia2lzaG9yZTFAZ21haWwuY29tIiwiX2lkIjoiNjJlM2E3NGNlNGIwY2MyOGJhMGNjMDkzIiwicm9sZSI6InVzZXIiLCJpYXQiOjE2NTk2OTI3MDR9.hYf-0x6TTGn4eGNBSv4yGyjdAA0MnBch0zToIAb3bDg",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"number\": \"3056930009020004\",\r\n    \"cvc\": \"989\",\r\n    \"exp_month\": \"02\",\r\n    \"exp_year\": \"23\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:5000/api/add-card",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"add-card"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "List of Users",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:5000/api/list-of-users",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"list-of-users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete User",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "localhost:5000/api/delete-user/62d112272c43cca52c387506",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"delete-user",
+						"62d112272c43cca52c387506"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add new doc",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2VtYWlsIjoidGVzdDkwQGdtYWlsLmNvbSIsIl9pZCI6IjYyZmU0NzE3NWE0NTBhM2VmOTJhNWI5ZSIsInJvbGUiOiJ1c2VyIiwiaWF0IjoxNjYwODMxNTExfQ.Aol1tkf8p3iNCiwX14ufRwpjss5orcweqI1vHlcsex0",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Covid\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:5000/api/add-new-doc",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"add-new-doc"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "{{authToken}}",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}
